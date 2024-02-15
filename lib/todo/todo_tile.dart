@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+
+// ignore: must_be_immutable
 class TodoTile extends StatelessWidget {
   final String todoName;
   final bool isCompleted;

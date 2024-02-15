@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
         // colorScheme: const ColorScheme.Colors.black,
         useMaterial3: true,
       ),
-      home: const TodoApp(),
+      home:  TodoApp(),
     );
   }
 }
