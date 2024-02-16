@@ -25,7 +25,7 @@ VoidCallback onCancelled;
           controller: controller,
           decoration: const InputDecoration(
             border: OutlineInputBorder(),
-            hintText: "Add new task",
+            hintText: "Add new todo",
           ),
         ),
         

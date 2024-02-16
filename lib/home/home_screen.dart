@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:first_project/todo/todo_tile.dart';
 
 class TodoApp extends StatefulWidget {
- 
-   TodoApp({super.key});
+ const  TodoApp({super.key});
 
   @override
   State<TodoApp> createState() => _TodoAppState();
@@ -19,7 +18,7 @@ List todoApp = [
 ];
 
 class _TodoAppState extends State<TodoApp> {
-  TextEditingController __controller = TextEditingController();
+  final TextEditingController __controller = TextEditingController();
 
   void checkBoxChanged(bool? value, int index) {
     setState(() {
@@ -50,26 +49,36 @@ class _TodoAppState extends State<TodoApp> {
     );
   }
 
+  //Delete task
+  void deleteTask(int index) {
+    setState(() {
+      todoApp.removeAt(index);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.yellow[200],
       appBar: AppBar(
-        title: const Text('Todo App'),
+        title: const Text('Todo App', style: TextStyle(color: Colors.white)),
+        backgroundColor: Colors.black87,
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: newTask,
         child: const Icon(Icons.add),
       ),
       body: ListView.builder(
-        itemCount: todoApp.length,
-        itemBuilder: (context, index) {
-          return TodoTile(
+      itemCount: todoApp.length,
+              itemBuilder: (context, index) {
+              return TodoTile(
               todoName: todoApp[index][0],
               isCompleted: todoApp[index][1],
-              onChanged: (value) => checkBoxChanged(value, index));
-        },
-      ),
+              onChanged: (value) => checkBoxChanged(value, index),
+              onDeleted: (context) => deleteTask(index), 
+           );
+          },
+        ),
     );
-  }
+      }
 }
