@@ -65,3 +65,5 @@ flutter {
 }
 
 dependencies {}
+
+apply plugins:'com-google.gms.googleS-serveslS'
