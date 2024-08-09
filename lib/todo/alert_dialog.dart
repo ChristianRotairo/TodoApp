@@ -17,7 +17,7 @@ VoidCallback onCancelled;
    return AlertDialog(
   backgroundColor: Colors.yellow,
   content: SizedBox(
-    height: 112,
+    height: 110,
 
     child: Column(
       children: [

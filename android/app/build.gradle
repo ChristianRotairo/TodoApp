@@ -64,6 +64,9 @@ flutter {
     source '../..'
 }
 
-dependencies {}
+dependencies {
+    // Add your dependencies here if needed
+}
 
-apply plugins:'com-google.gms.googleS-serveslS'
+// Corrected `apply` statement
+apply plugin: 'com.google.gms.google-services'
