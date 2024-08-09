@@ -1,10 +1,18 @@
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
+import 'package:path_provider/path_provider.dart'; // Import this package
+import 'dart:io'; // Import this for Directory
 
 class SQLite {
   Future<Database> openTodoDatabase() async {
-    final databasePath = await getDatabasesPath();
-    final path = join(databasePath, 'db_todo.db');
+    // Get the external storage directory
+    Directory? directory = await getExternalStorageDirectory();
+
+    if (directory == null) {
+      throw Exception('Could not access external storage directory.');
+    }
+
+    final path = join(directory.path, 'db_todo.db');
 
     return await openDatabase(
       path,
@@ -13,6 +21,7 @@ class SQLite {
         await db.execute(
           'CREATE TABLE todo_app(id INTEGER PRIMARY KEY AUTOINCREMENT, todo TEXT, status INTEGER)',
         );
+        print('Database and table successfully created.');
       },
     );
   }
